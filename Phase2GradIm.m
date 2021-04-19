@@ -1,6 +1,9 @@
 function outIm = Phase2GradIm(inIm)
-
-  p = (double(inIm)/255.0)*(2*pi)-pi;
+  %Dr Paul Hill 2021.  University of Bristol.
+  %convert inIm to 2D gradient image
+  %input inIm must be in the range 0->1 (inteferogram: 0 = -pi, 1 = pi))
+  %output scaled to 0->255 with 128 effectively being zero (0=-pi,255=pi)
+  p = (double(inIm))*(2*pi)-pi;
   cp = exp(1i*p); rp = real(cp); ip = imag(cp);
   [prx, pry] = gradient(rp);
   [pix, piy] = gradient(ip);
